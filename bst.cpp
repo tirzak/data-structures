@@ -1,19 +1,24 @@
+#include <iostream>
+#include <vector>
 struct Node {
     int item;
     struct Node *left, *right;
 };
 
 class Tree{
-   
+
+public:   
     Tree();
     ~Tree();
     void insert(int item);
     int search(int item);
+    void printTree();
 private:
     void insertHelp(struct Node* node,int item);
     int searchHelp(struct Node* node,int item);
     int searchHelpIterative(struct Node* node,int item);
     struct Node* root;
+    void printHelp(struct Node* node);
 
 
 
@@ -75,12 +80,12 @@ int Tree::searchHelp(struct Node* node,int item){
     if(item==node->item) return node->item;
     else if(item<node->item){
         if(node->left!=nullptr){
-        searchHelp(node->left,item);
+        return searchHelp(node->left,item);
         }
     }
     else if(item>node->item){
         if(node->right!=nullptr){
-        searchHelp(node->right,item);
+        return searchHelp(node->right,item);
         }
     
     }
@@ -105,4 +110,36 @@ int Tree::searchHelpIterative(struct Node* node,int item){
             current=current->right;
         }        
     }
+
+    return -1;
+
+
+}
+void Tree::printTree(){
+    if (root!=nullptr){
+        printHelp(root);
+    }
+}
+void Tree::printHelp(struct Node* node){
+    if (node == nullptr)
+        return;
+    printHelp(node->left);
+    std::cout<<node->item<<"\n";
+    printHelp(node->right);
+
+}
+
+int main(void){
+std::vector <int> x ={20,1,2,3,-1,-4,-3};
+Tree *bt = new Tree();
+
+for (auto &it: x){
+bt->insert(it);
+}
+
+int p=bt->search(3);
+std::cout<<p<<std::endl;
+bt->printTree();
+return 0;
+
 }
