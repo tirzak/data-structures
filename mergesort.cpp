@@ -56,10 +56,6 @@ int main (void){
 
 int arr[]={33, 42, 9, 37, 8, 47, 5, 29, 49, 31, 4, 48, 16, 22, 26};
 int arr_size= sizeof(arr)/sizeof(arr[0]);
-queue <int> queue1;
-queue1.push(1);
-queue1.pop();
-cout<<queue1.front()<<endl;
 mergesort(arr,0,(arr_size-1));
 for (int i=0; i<arr_size;i++){
     cout<<arr[i]<<'\n';
