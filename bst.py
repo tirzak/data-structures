@@ -80,15 +80,7 @@ class Tree:
                      
 
 
-x=Tree()
-l=[20,1,2,3,-1,-4,-3]
 
-for i in l:
-    x.insert(i)
-x.printTree()
-
-# y=x.searchIterative(4)
-# print('%dG'%y)
 
                 
 
