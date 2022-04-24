@@ -84,7 +84,7 @@ ll query(int ql, int qh,int l , int h, int pos){
   }
 
   if(ql>h or qh<l ){
-    return -1;
+    return LLONG_MAX;
   }
 
   int mid = (l+h)>>1;
