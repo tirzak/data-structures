@@ -43,38 +43,41 @@ using vpll=vector<pll>;
 class Seg{
 vector<ll> sg;
 vector<ll> lazy;
+
 int sz;
+
 public:
+
 Seg(int v){
-sz=v;
-int x = (int)(ceil(log2(v))); //Height of segment tree
-int max_size = 2*(int)pow(2, x) - 1;
-v--;
-v |= v >> 1;
-v |= v >> 2;
-v |= v >> 4;
-v |= v >> 8;
-v |= v >> 16;
+  sz=v;
+  int x = (int)(ceil(log2(v))); //Height of segment tree
+  int max_size = 2*(int)pow(2, x) - 1;
+  v--;
+  v |= v >> 1;
+  v |= v >> 2;
+  v |= v >> 4;
+  v |= v >> 8;
+  v |= v >> 16;
 
 
-v++;
-v*=2;
-sg=vector<ll> (v-1,0);
-lazy=vector<ll>(v-1);
+  v++;
+  v*=2;
+  sg=vector<ll> (v-1,0);
+  lazy=vector<ll>(v-1);
 }
 
 void buildtree(int l, int r , int pos, vector<ll> &v){
-if(l==r){
-  sg[pos]=v[l];
-  return;
+  if(l==r){
+    sg[pos]=v[l];
+    return;
 
-}
+  }
 
-int mid = (l+r)>>1;
-buildtree(l,mid,2*pos+1,v);
-buildtree(mid+1,r,2*pos+2,v);
+  int mid = (l+r)>>1;
+  buildtree(l,mid,2*pos+1,v);
+  buildtree(mid+1,r,2*pos+2,v);
 
-sg[pos]=min(sg[2*pos+1],sg[2*pos+2]);
+  sg[pos]=min(sg[2*pos+1],sg[2*pos+2]);
 }
 
 
