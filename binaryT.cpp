@@ -130,16 +130,16 @@ void Tree::printHelp(struct Node* node){
 }
 
 int main(void){
-std::vector <int> x ={20,1,2,3,-1,-4,-3};
-Tree *bt = new Tree();
+    std::vector <int> x ={20,1,2,3,-1,-4,-3};
+    Tree *bt = new Tree();
 
-for (auto &it: x){
-bt->insert(it);
-}
+    for (auto &it: x){
+    bt->insert(it);
+    }
 
-int p=bt->search(3);
-std::cout<<p<<std::endl;
-bt->printTree();
-return 0;
+    int p=bt->search(3);
+    std::cout<<p<<std::endl;
+    bt->printTree();
+    return 0;
 
 }
